@@ -24,10 +24,10 @@ export default function Footer() {
         <div>
           <h4 className="text-base font-semibold mb-4">Enlaces</h4>
           <ul className="space-y-2 text-sm text-muted-foreground">
-            <li><a href="#inicio" className="hover:underline">Inicio</a></li>
-            <li><a href="#servicios" className="hover:underline">Servicios</a></li>
-            <li><a href="#proyectos" className="hover:underline">Proyectos</a></li>
-            <li><a href="#contacto" className="hover:underline">Contacto</a></li>
+            <li><a href="/#inicio" className="hover:underline">Inicio</a></li>
+            <li><a href="/#servicios" className="hover:underline">Servicios</a></li>
+            <li><a href="/#proyectos" className="hover:underline">Proyectos</a></li>
+            <li><a href="/#contacto" className="hover:underline">Contacto</a></li>
             <li><a href="politicas" className="hover:underline">Politicas</a></li>
           </ul>
         </div>

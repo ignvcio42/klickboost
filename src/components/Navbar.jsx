@@ -22,10 +22,10 @@ export default function Navbar() {
   }, []);
 
   const links = [
-    { label: "Servicios", href: "#servicios" },
-    { label: "Proyectos", href: "#proyectos" },
-    { label: "Sobre nosotros", href: "#acerca" },
-    { label: "Testimonios", href: "#testimonios" },
+    { label: "Servicios", href: "/#servicios" },
+    { label: "Proyectos", href: "/#proyectos" },
+    { label: "Sobre nosotros", href: "/#acerca" },
+    { label: "Testimonios", href: "/#testimonios" },
   ];
 
   const brandTextClass = scrolled
@@ -50,7 +50,7 @@ export default function Navbar() {
     <header className={headerClass}>
       <div className="pointer-events-none absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-slate-900/20 to-transparent dark:via-white/20" />
       <div className="container mx-auto flex h-16 items-center justify-between">
-        <a href="#inicio" className="relative z-10 flex items-center">
+        <a href="/#inicio" className="relative z-10 flex items-center">
           <img
             src="img/logo_vfinal.png"
             alt="Klick Boost"
@@ -80,7 +80,7 @@ export default function Navbar() {
                 : "border-slate-900/20 text-slate-900 hover:bg-slate-200/50 dark:border-white/40 dark:text-white dark:hover:bg-white/10 dark:hover:text-white"
             }
           >
-            <a href="#contacto">Cotiza tu sitio</a>
+            <a href="/#contacto">Cotiza tu sitio</a>
           </Button>
           <ModeToggle />
         </nav>
@@ -131,7 +131,7 @@ export default function Navbar() {
               <div className="mt-auto border-t bg-background/80 backdrop-blur supports-[backdrop-filter]:bg-background/60 p-4 pb-[calc(1rem+env(safe-area-inset-bottom))]">
                 <SheetClose asChild>
                   <Button asChild className="w-full">
-                    <a href="#contacto">Cotiza tu sitio</a>
+                    <a href="/#contacto">Cotiza tu sitio</a>
                   </Button>
                 </SheetClose>
               </div>
