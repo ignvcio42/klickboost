@@ -35,7 +35,7 @@ export default function Acerca() {
   ];
 
   return (
-    <section id="acerca" className="scroll-mt-16 py-20 ">
+    <section id="acerca" className="scroll-mt-16 py-20">
       {/* Bloque principal: texto + imagen */}
       <div className="container mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 grid items-center gap-10 md:grid-cols-2">
         {/* Columna izquierda: título, párrafos y cards */}

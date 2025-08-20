@@ -6,6 +6,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Home } from "./pages/home";
 import { NotFound } from "./pages/NotFound";
 import { Toaster } from "react-hot-toast";
+import Politicas from "./pages/Politicas";
 
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
         <Routes>
           <Route index element={<Home />} />
           <Route path="*" element={<NotFound />} />
+          <Route path="/politicas" element={<Politicas />} />
         </Routes>
           </ThemeProvider>
           <Toaster position="top-right" />

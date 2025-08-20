@@ -31,14 +31,26 @@ export default function HeroKlickBoost({
       className="relative flex items-center justify-center overflow-hidden bg-gradient-to-r from-teal-400 to-indigo-600"
       style={{ minHeight: `calc(100svh - ${navHeight}px)` }}
     >
-      {/* Fondo blur */}
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-tr from-orange-400 via-pink-500 to-purple-600 opacity-70 blur-3xl" />
+      {/* Fondo blur
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-tr from-orange-400 via-pink-500 to-purple-600 opacity-70 blur-3xl" /> */}
+
+      <div className="absolute inset-0 z-0">
+        <div
+          className="absolute inset-0 bg-cover bg-center"
+          style={{ backgroundImage: "url('/img/hero_bg.png')" }}
+        />
+        <div className="absolute inset-0 bg-black/50" />
+      </div>
 
       {/* Contenido principal */}
       <div className="container relative z-10 mx-auto flex max-w-5xl flex-col items-center px-6 text-center text-white">
-        <div className="mb-8 w-24">
-          <div className="mx-auto h-16 w-16 rounded-full bg-blue-500" />
-        </div>
+        {/* <div className="mb-8 w-24">
+          <img
+            src="/PNG/Nebula.png"
+            alt="Logo Klick Boost"
+            className="mx-auto h-16 w-auto object-contain hover:scale-250 transition-transform duration-300"
+          />
+        </div> */}
 
         <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl lg:text-7xl">
           Creando Experiencias Digitales
@@ -68,6 +80,7 @@ export default function HeroKlickBoost({
           </Button>
         </div>
       </div>
+      <div></div>
 
       {/* Flecha scroll */}
       <div className="absolute bottom-6 z-10 animate-bounce">

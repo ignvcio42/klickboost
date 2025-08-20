@@ -1,5 +1,6 @@
 import Acerca from '@/components/AcercaDe'
 import Contacto from '@/components/Contacto'
+import Footer from '@/components/Footer'
 import HeroKlickBoost from '@/components/Hero'
 import Navbar from '@/components/Navbar'
 import Portafolio from '@/components/Portfolio'
@@ -26,6 +27,7 @@ export const Home = () => {
         <Contacto />
 
         {/* Footer */}
+        <Footer />
 
     </div>
   )

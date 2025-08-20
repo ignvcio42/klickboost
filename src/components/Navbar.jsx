@@ -52,7 +52,7 @@ export default function Navbar() {
       <div className="container mx-auto flex h-16 items-center justify-between">
         <a href="#inicio" className="relative z-10 flex items-center">
           <img
-            src="img/logo_3.png"
+            src="img/logo_vfinal.png"
             alt="Klick Boost"
             width={1024}
             height={1024}
@@ -61,7 +61,7 @@ export default function Navbar() {
           <span
             className={` font-bold text-2xl tracking-tight ${brandTextClass}`}
           >
-            Klick Boost
+            {/* Klick Boost */}
           </span>
         </a>
 

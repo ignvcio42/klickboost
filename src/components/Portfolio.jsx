@@ -27,30 +27,40 @@ const defaultProjects = [
 
 export default function Portafolio({ projects = defaultProjects }) {
   return (
-    <section id="proyectos" className="scroll-mt-16 py-20 bg-[#698474] dark:bg-[#698474]">
-      <div className="container mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+    <section id="proyectos" className="relative scroll-mt-16 py-20">
+      {/* Imagen de fondo + overlay */}
+      <div className="absolute inset-0 z-0">
+        <img
+          src="/img/bg_section_light.png" // Coloca tu imagen en /public/img/
+          alt="Fondo portafolio"
+          className="h-full w-full absolute inset-0 bg-cover bg-center bg-fixed"
+        />
+        <div className="absolute inset-0 bg-black/40" />
+      </div>
+
+      <div className="container mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 text-white">
         {/* Header centrado */}
         <div className="mx-auto mb-10 max-w-xl text-center">
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-semibold tracking-tight text-foreground">
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-semibold tracking-tight">
             Nuestros trabajos
           </h1>
-          <p className="mt-2 text-sm text-white">
+          <p className="mt-2 text-sm text-white/90">
             Un vistazo a los proyectos que hemos construido. Haz clic para visitar.
           </p>
-          <div className="mx-auto mt-5 h-px w-16 bg-gradient-to-r from-transparent via-primary/60 to-transparent" />
+          <div className="mx-auto mt-5 h-px w-16 bg-gradient-to-r from-transparent via-white/60 to-transparent" />
         </div>
 
-        {/* Grid centrado: 1 → 2 → 3 columnas, con cards max-w-sm */}
+        {/* Grid de proyectos */}
         <div className="grid grid-cols-1 justify-items-center gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-8">
           {projects.map((p, idx) => (
             <Card
               key={`${p.title}-${idx}`}
-              className="group relative w-full max-w-sm overflow-hidden border bg-card text-card-foreground shadow-sm transition-all hover:-translate-y-1 hover:border-primary/30 hover:shadow-lg"
+              className="group relative w-full max-w-sm overflow-hidden border border-white/10 bg-white/5 text-white shadow-sm backdrop-blur-md transition-all hover:-translate-y-1 hover:border-primary/30 hover:shadow-lg"
             >
-              {/* borde inferior lineal (como en servicios) */}
+              {/* borde inferior */}
               <div className="pointer-events-none absolute inset-x-0 -bottom-px h-px bg-gradient-to-r from-transparent via-primary/40 to-transparent" />
 
-              {/* Hace toda la card clickeable */}
+              {/* hace la card clickeable */}
               <a
                 href={p.href}
                 target={p.href?.startsWith("#") ? "_self" : "_blank"}
@@ -60,7 +70,6 @@ export default function Portafolio({ projects = defaultProjects }) {
               />
 
               <CardContent className="p-0">
-                {/* más compacta: 4/3 */}
                 <div className="relative aspect-[4/3] w-full overflow-hidden">
                   <img
                     src={p.image}
@@ -68,7 +77,6 @@ export default function Portafolio({ projects = defaultProjects }) {
                     className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
                     loading="lazy"
                   />
-                  {/* Overlay con título compacto */}
                   <div className="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/60 to-transparent p-3 text-white">
                     <h3 className="text-base font-semibold leading-tight">{p.title}</h3>
                     {p.subtitle && <p className="text-xs opacity-90">{p.subtitle}</p>}

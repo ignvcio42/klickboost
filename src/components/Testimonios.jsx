@@ -29,7 +29,7 @@ const initialsOf = (fullName = "") =>
 
 export default function TestimoniosSimple({ items = testimonios }) {
   return (
-    <section id="testimonios" className="scroll-mt-16 py-16 ">
+    <section id="testimonios" className="scroll-mt-16 py-16">
       <div className="container mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <div className="mx-auto mb-10 max-w-2xl text-center">
           <h2 className="text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
