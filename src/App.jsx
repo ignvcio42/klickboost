@@ -3,7 +3,7 @@ import NavbarKlickBoost from "./components/Navbar";
 import { ThemeProvider } from "./components/theme-provider";
 import HeroKlickBoost from "./components/Hero";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { Home } from "./pages/home";
+import { Home } from "./pages/Home";
 import { NotFound } from "./pages/NotFound";
 import { Toaster } from "react-hot-toast";
 import Politicas from "./pages/Politicas";
