@@ -8,6 +8,7 @@ import {
   Select, SelectTrigger, SelectContent, SelectItem, SelectValue,
 } from "@/components/ui/select";
 import { Card, CardContent } from "@/components/ui/card";
+import { motion } from "motion/react";
 
 export const SERVICE_OPTIONS = [
   { value: "web", label: "Sitio Web" },
@@ -57,16 +58,28 @@ export default function Contacto() {
   return (
     <section id="contacto" className="scroll-mt-16 py-20">
       <div className="container mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-        <div className="mx-auto mb-10 max-w-3xl text-center">
+        <motion.div
+          className="mx-auto mb-10 max-w-3xl text-center"
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.4 }}
+          transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+        >
           <h2 className="text-3xl sm:text-4xl font-semibold tracking-tight text-foreground">
             ¿Listo para empezar el proyecto que te llevará a otro nivel?
           </h2>
           <p className="mt-2 text-muted-foreground">
             Contáctanos y creemos algo increíble juntos.
           </p>
-        </div>
+        </motion.div>
 
-        <Card className="border bg-card">
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.5, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+        >
+          <Card className="border bg-card">
           <CardContent className="p-6 sm:p-8">
             <form onSubmit={onSubmit} className="space-y-6">
               {/* Nombre / Apellido */}
@@ -167,6 +180,7 @@ export default function Contacto() {
             </form>
           </CardContent>
         </Card>
+        </motion.div>
       </div>
     </section>
   );

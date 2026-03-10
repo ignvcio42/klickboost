@@ -1,46 +1,53 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
+import { motion } from "motion/react";
 
 const defaultProjects = [
   {
-    title: "Proyecto demo",
-    subtitle: "Sitio en construcción — pronto novedades",
-    href: "#contacto",
-    image: "/img/portfolio-1.webp",
+    title: "Proyecto Barberia",
+    subtitle: "Landing/Software para una barberia",
+    href: "https://www.987barberia.cl/",
+    image: "/img/proyectos/p_1.png",
     tags: ["Landing", "React", "SEO"],
   },
   {
     title: "Proyecto demo 2",
     subtitle: "Sitio en construcción — pronto novedades",
-    href: "#contacto",
-    image: "/img/portfolio-1.webp",
+    href: "https://www.hinibricks.cl/",
+    image: "/img/proyectos/p_2.png",
     tags: ["E-commerce", "UX", "Optimización"],
   },
-  {
-    title: "Proyecto demo 3",
-    subtitle: "Sitio en construcción — pronto novedades",
-    href: "#contacto",
-    image: "/img/portfolio-1.webp",
-    tags: ["Corporativo", "SSR", "SEO"],
-  },
 ];
+
+const cardVariants = {
+  hidden: { opacity: 0, y: 24 },
+  visible: (i) => ({
+    opacity: 1,
+    y: 0,
+    transition: { delay: i * 0.1, duration: 0.45, ease: [0.22, 1, 0.36, 1] },
+  }),
+};
 
 export default function Portafolio({ projects = defaultProjects }) {
   return (
     <section id="proyectos" className="relative scroll-mt-16 py-20">
-      {/* Imagen de fondo + overlay */}
       <div className="absolute inset-0 z-0">
         <img
-          src="/img/bg_section_light.png" // Coloca tu imagen en /public/img/
+          src="/img/bg_section_light.png"
           alt="Fondo portafolio"
           className="h-full w-full absolute inset-0 bg-cover bg-center bg-fixed"
         />
         <div className="absolute inset-0 bg-black/40" />
       </div>
 
-      <div className="container mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 text-white">
-        {/* Header centrado */}
-        <div className="mx-auto mb-10 max-w-xl text-center">
+      <div className="container relative z-10 mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 text-white">
+        <motion.div
+          className="mx-auto mb-10 max-w-xl text-center"
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.4 }}
+          transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+        >
           <h1 className="text-3xl sm:text-4xl lg:text-5xl font-semibold tracking-tight">
             Nuestros trabajos
           </h1>
@@ -48,12 +55,20 @@ export default function Portafolio({ projects = defaultProjects }) {
             Un vistazo a los proyectos que hemos construido. Haz clic para visitar.
           </p>
           <div className="mx-auto mt-5 h-px w-16 bg-gradient-to-r from-transparent via-white/60 to-transparent" />
-        </div>
+        </motion.div>
 
-        {/* Grid de proyectos */}
         <div className="grid grid-cols-1 justify-items-center gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-8">
           {projects.map((p, idx) => (
-            <Card
+            <motion.div
+              key={`${p.title}-${idx}`}
+              custom={idx}
+              variants={cardVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.2 }}
+              className="w-full max-w-sm"
+            >
+              <Card
               key={`${p.title}-${idx}`}
               className="group relative w-full max-w-sm overflow-hidden border border-white/10 bg-white/5 text-white shadow-sm backdrop-blur-md transition-all hover:-translate-y-1 hover:border-primary/30 hover:shadow-lg"
             >
@@ -119,6 +134,7 @@ export default function Portafolio({ projects = defaultProjects }) {
                 </Button>
               </CardFooter>
             </Card>
+            </motion.div>
           ))}
         </div>
       </div>

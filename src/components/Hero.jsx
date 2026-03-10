@@ -1,4 +1,13 @@
 import { Button } from "@/components/ui/button";
+import { motion } from "motion/react";
+
+const fadeUp = {
+  initial: { opacity: 0, y: 24 },
+  animate: { opacity: 1, y: 0 },
+  transition: { duration: 0.5 },
+};
+
+const stagger = { staggerChildren: 0.1, delayChildren: 0.15 };
 
 export default function HeroKlickBoost({
   onPrimaryClick,
@@ -31,9 +40,6 @@ export default function HeroKlickBoost({
       className="relative flex items-center justify-center overflow-hidden bg-gradient-to-r from-teal-400 to-indigo-600"
       style={{ minHeight: `calc(100svh - ${navHeight}px)` }}
     >
-      {/* Fondo blur
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-tr from-orange-400 via-pink-500 to-purple-600 opacity-70 blur-3xl" /> */}
-
       <div className="absolute inset-0 z-0">
         <div
           className="absolute inset-0 bg-cover bg-center"
@@ -42,26 +48,34 @@ export default function HeroKlickBoost({
         <div className="absolute inset-0 bg-black/50" />
       </div>
 
-      {/* Contenido principal */}
-      <div className="container relative z-10 mx-auto flex max-w-5xl flex-col items-center px-6 text-center text-white">
-        {/* <div className="mb-8 w-24">
-          <img
-            src="/PNG/Nebula.png"
-            alt="Logo Klick Boost"
-            className="mx-auto h-16 w-auto object-contain hover:scale-250 transition-transform duration-300"
-          />
-        </div> */}
-
-        <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl lg:text-7xl">
+      <motion.div
+        className="container relative z-10 mx-auto flex max-w-5xl flex-col items-center px-6 text-center text-white"
+        initial="initial"
+        animate="animate"
+        variants={stagger}
+      >
+        <motion.h1
+          className="text-4xl font-extrabold tracking-tight sm:text-5xl lg:text-7xl"
+          variants={fadeUp}
+          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+        >
           Creando Experiencias Digitales
-        </h1>
+        </motion.h1>
 
-        <p className="mt-4 max-w-2xl text-lg text-white/90 sm:text-xl">
+        <motion.p
+          className="mt-4 max-w-2xl text-lg text-white/90 sm:text-xl"
+          variants={fadeUp}
+          transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+        >
           Desarrollo web profesional en Chile. Creamos sitios web modernos,
           responsivos y optimizados para tu negocio.
-        </p>
+        </motion.p>
 
-        <div className="mt-12 flex flex-col gap-4 sm:flex-row">
+        <motion.div
+          className="mt-12 flex flex-col gap-4 sm:flex-row"
+          variants={fadeUp}
+          transition={{ duration: 0.5, delay: 0.2 }}
+        >
           <Button
             size="lg"
             variant="default"
@@ -78,13 +92,21 @@ export default function HeroKlickBoost({
           >
             Empieza tu proyecto
           </Button>
-        </div>
-      </div>
-      <div></div>
+        </motion.div>
+      </motion.div>
 
-      {/* Flecha scroll */}
-      <div className="absolute bottom-6 z-10 animate-bounce">
-        <a href="#proyectos" aria-label="Desplazarse a la siguiente sección">
+      <motion.div
+        className="absolute bottom-6 z-10"
+        initial={{ opacity: 0, y: -10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 1, duration: 0.5 }}
+      >
+        <motion.a
+          href="#proyectos"
+          aria-label="Desplazarse a la siguiente sección"
+          animate={{ y: [0, 6, 0] }}
+          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             className="h-8 w-8 text-white"
@@ -99,8 +121,8 @@ export default function HeroKlickBoost({
               d="M19 14l-7 7-7-7M12 21V3"
             />
           </svg>
-        </a>
-      </div>
+        </motion.a>
+      </motion.div>
     </section>
   );
 }

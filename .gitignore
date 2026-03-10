@@ -12,6 +12,14 @@ dist
 dist-ssr
 *.local
 
+# Env (secretos y VITE_SITE_URL local)
+.env
+.env.local
+.env.*.local
+
+# Vercel CLI (si usas vercel dev)
+.vercel
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
@@ -22,3 +30,4 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+

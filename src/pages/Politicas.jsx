@@ -1,13 +1,14 @@
 import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
-import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import Navbar from "@/components/Navbar";
+import SEO from "@/components/SEO";
 
 export default function Politicas() {
   const [lastModified, setLastModified] = useState("");
 
   useEffect(() => {
-    fetch("/docs/cotizacion.pdf")
+    fetch("/docs/Políticas_de_privacidad.pdf")
       .then((res) => res.headers.get("Last-Modified"))
       .then((date) => {
         if (date) {
@@ -23,7 +24,10 @@ export default function Politicas() {
 
   return (
     <div className="min-h-screen flex flex-col bg-background text-foreground">
-      {/* Navbar */}
+      <SEO
+        title="Políticas de Privacidad"
+        description="Políticas de privacidad de Klick Boost. Conoce cómo protegemos y tratamos tu información."
+      />
       <Navbar />
 
       {/* Contenido principal */}
@@ -42,7 +46,7 @@ export default function Politicas() {
           {/* Visor PDF */}
           <div className="w-full h-[80vh] rounded-lg overflow-hidden border border-border shadow-sm">
             <iframe
-              src="/docs/cotizacion.pdf"
+              src="/docs/Políticas_de_privacidad.pdf"
               title="Políticas de Privacidad"
               className="w-full h-full"
             />
@@ -51,7 +55,7 @@ export default function Politicas() {
           {/* Descarga + fecha */}
           <div className="flex flex-col md:flex-row items-start justify-between gap-4 md:items-center">
             <Button asChild variant="outline">
-              <a href="/docs/cotizacion.pdf" download>
+              <a href="/docs/Políticas_de_privacidad.pdf" download>
                 Descargar PDF
               </a>
             </Button>

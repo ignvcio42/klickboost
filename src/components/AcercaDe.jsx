@@ -7,6 +7,16 @@ import {
 } from "@/components/ui/card";
 import { HyperText } from "@/components/magicui/hyper-text";
 import { Sparkles, Users, ShieldCheck, Rocket, BadgeCheck, Handshake, Lightbulb } from "lucide-react";
+import { motion } from "motion/react";
+
+const fadeInUp = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] } },
+};
+
+const staggerContainer = {
+  visible: { transition: { staggerChildren: 0.1, delayChildren: 0.1 } },
+};
 
 export default function Acerca() {
   const features = [
@@ -36,10 +46,13 @@ export default function Acerca() {
 
   return (
     <section id="acerca" className="scroll-mt-16 py-20">
-      {/* Bloque principal: texto + imagen */}
       <div className="container mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 grid items-center gap-10 md:grid-cols-2">
-        {/* Columna izquierda: título, párrafos y cards */}
-        <div>
+        <motion.div
+          initial={{ opacity: 0, x: -24 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true, amount: 0.25 }}
+          transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+        >
           <h1 className="text-balance text-5xl font-bold tracking-tight leading-tight text-foreground">
             Acerca de{" "}
             <HyperText className="inline align-baseline text-[inherit] leading-[inherit] bg-gradient-to-r from-blue-600 via-sky-500 to-teal-400 bg-clip-text text-transparent">
@@ -60,28 +73,39 @@ export default function Acerca() {
             nivel.
           </p>
 
-          {/* Features (mismo look que Servicios) */}
-          <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2">
+          <motion.div
+            className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2"
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.2 }}
+          >
             {features.map(({ icon: Icon, title, desc }) => (
-              <Card
-                key={title}
-                className="group relative overflow-hidden border bg-card text-card-foreground transition-all hover:-translate-y-1 hover:border-primary/30 hover:shadow-lg"
-              >
-                <div className="pointer-events-none absolute inset-x-0 -bottom-px h-px bg-gradient-to-r from-transparent via-primary/40 to-transparent" />
-                <CardHeader>
-                  <div className="mb-2 inline-flex h-10 w-10 items-center justify-center rounded-full bg-primary/10 text-primary transition-colors group-hover:bg-primary/20">
-                    <Icon className="h-5 w-5" />
-                  </div>
-                  <CardTitle className="text-base">{title}</CardTitle>
-                  <CardDescription className="text-sm">{desc}</CardDescription>
-                </CardHeader>
-              </Card>
+              <motion.div key={title} variants={fadeInUp}>
+                <Card
+                  className="group relative overflow-hidden border bg-card text-card-foreground transition-all hover:-translate-y-1 hover:border-primary/30 hover:shadow-lg"
+                >
+                  <div className="pointer-events-none absolute inset-x-0 -bottom-px h-px bg-gradient-to-r from-transparent via-primary/40 to-transparent" />
+                  <CardHeader>
+                    <div className="mb-2 inline-flex h-10 w-10 items-center justify-center rounded-full bg-primary/10 text-primary transition-colors group-hover:bg-primary/20">
+                      <Icon className="h-5 w-5" />
+                    </div>
+                    <CardTitle className="text-base">{title}</CardTitle>
+                    <CardDescription className="text-sm">{desc}</CardDescription>
+                  </CardHeader>
+                </Card>
+              </motion.div>
             ))}
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
 
-        {/* Columna derecha: imagen (abajo en móvil, derecha en md+) */}
-        <div className="order-last md:order-none">
+        <motion.div
+          className="order-last md:order-none"
+          initial={{ opacity: 0, x: 24 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true, amount: 0.25 }}
+          transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+        >
           <div className="relative mx-auto w-full max-w-md md:max-w-lg overflow-hidden rounded-xl border bg-card shadow-sm">
             <img
               src="/img/img_hero.webp"
@@ -94,12 +118,17 @@ export default function Acerca() {
             </div>
             <div className="pointer-events-none absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-primary/40 to-transparent" />
           </div>
-        </div>
+        </motion.div>
       </div>
 
-      {/* 👇 Bloque extra: Nuestros valores (cards centradas como en Servicios) */}
       <div className="container mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 mt-16">
-        <div className="mx-auto mb-8 max-w-2xl text-center">
+        <motion.div
+          className="mx-auto mb-8 max-w-2xl text-center"
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.4 }}
+          transition={{ duration: 0.45 }}
+        >
           <h2 className="text-2xl sm:text-3xl font-semibold tracking-tight text-foreground">
             Nuestros valores
           </h2>
@@ -107,25 +136,32 @@ export default function Acerca() {
             Lo que guía cada decisión y entrega en Klick Boost.
           </p>
           <div className="mx-auto mt-5 h-px w-20 bg-gradient-to-r from-transparent via-primary/60 to-transparent" />
-        </div>
+        </motion.div>
 
-        <div className="grid grid-cols-1 gap-6 justify-items-center sm:grid-cols-2 lg:grid-cols-3 lg:gap-8">
+        <motion.div
+          className="grid grid-cols-1 gap-6 justify-items-center sm:grid-cols-2 lg:grid-cols-3 lg:gap-8"
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.15 }}
+        >
           {valores.map(({ icon: Icon, title, desc }) => (
-            <Card
-              key={title}
-              className="group relative w-full max-w-sm overflow-hidden border bg-card text-card-foreground text-center shadow-sm transition-all hover:-translate-y-1 hover:border-primary/30 hover:shadow-lg"
-            >
-              <div className="pointer-events-none absolute inset-x-0 -bottom-px h-px bg-gradient-to-r from-transparent via-primary/40 to-transparent" />
-              <CardHeader className="items-center">
-                <div className="mb-2 inline-flex h-12 w-12 items-center justify-center rounded-full bg-primary/10 text-primary transition-colors group-hover:bg-primary/20">
-                  <Icon className="h-6 w-6" />
-                </div>
-                <CardTitle className="text-lg">{title}</CardTitle>
-                <CardDescription className="text-sm">{desc}</CardDescription>
-              </CardHeader>
-            </Card>
+            <motion.div key={title} variants={fadeInUp} className="w-full max-w-sm">
+              <Card
+                className="group relative w-full overflow-hidden border bg-card text-card-foreground text-center shadow-sm transition-all hover:-translate-y-1 hover:border-primary/30 hover:shadow-lg"
+              >
+                <div className="pointer-events-none absolute inset-x-0 -bottom-px h-px bg-gradient-to-r from-transparent via-primary/40 to-transparent" />
+                <CardHeader className="items-center">
+                  <div className="mb-2 inline-flex h-12 w-12 items-center justify-center rounded-full bg-primary/10 text-primary transition-colors group-hover:bg-primary/20">
+                    <Icon className="h-6 w-6" />
+                  </div>
+                  <CardTitle className="text-lg">{title}</CardTitle>
+                  <CardDescription className="text-sm">{desc}</CardDescription>
+                </CardHeader>
+              </Card>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );
